@@ -1,0 +1,4 @@
+outlook N 1 2 3 
+humidity N 4 5 
+wind N 6 7 
+class N false true

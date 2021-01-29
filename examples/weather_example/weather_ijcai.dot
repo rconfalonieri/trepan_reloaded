@@ -1,0 +1,18 @@
+digraph tree
+{
+	1740673280 [color=blue,label="outlook",shape=box];
+	1740673280 -> 1740711216 [label="sunny"];
+	1740711216 [color=blue,label="humidity",shape=box];
+	1740711216 -> 1740735888 [label="high"];
+	1740735888 [color=blue,fontcolor=red,label="false"];
+	1740711216 -> 1742734144 [label="normal"];
+	1742734144 [color=blue,fontcolor=green,label="true"];
+	1740673280 -> 1740736096 [label="overcast"];
+	1740736096 [color=blue,fontcolor=green,label="true"];
+	1740673280 -> 1740736960 [label="rain"];
+	1740736960 [color=blue,label="wind",shape=box];
+	1740736960 -> 1742735040 [label="strong"];
+	1742735040 [color=blue,fontcolor=red,label="false"];
+	1740736960 -> 1742734240 [label="normal"];
+	1742734240 [color=blue,fontcolor=green,label="true"];
+}

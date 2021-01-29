@@ -1,0 +1,11 @@
+
+IF (Gender = Male) 
+|   AND (isMarried = No) 
+|   |   AND (isSelfEmployed = No) THEN 'Granted' 
+|   |   AND (isSelfEmployed = Yes) THEN 'NotGranted' 
+|   AND (isMarried = Yes) THEN 'Granted' 
+IF (Gender = Female) 
+|   AND (hasDependents = 0) THEN 'Granted' 
+|   AND (hasDependents = 1) THEN 'NotGranted' 
+|   AND (hasDependents = 2) THEN 'NotGranted' 
+|   AND (hasDependents = 3+) THEN 'NotGranted' 

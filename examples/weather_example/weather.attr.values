@@ -1,0 +1,4 @@
+outlook N outlook (1,outlook_is_sunny) (2,outlook_is_overcast) (3,outlook_is_rain)
+humidity N humidity (4,humidity_is_high) (5,humidity_is_normal)
+wind N wind (6,wind_is_strong) (7,wind_is_normal)
+class N class (false,not_play) (true,play)

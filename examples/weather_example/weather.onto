@@ -1,0 +1,10 @@
+outlook 1 0.232209 
+outlook_is_sunny 0 0.425713 
+outlook_is_overcast 1 0.480453 
+outlook_is_rain 1 0.723931 
+humidity 0 0.997521 
+humidity_is_high 1 0.966232 
+humidity_is_normal 0 0.011830 
+wind 0 0.665559 
+wind_is_strong 1 0.363947 
+wind_is_normal 1 0.736743 

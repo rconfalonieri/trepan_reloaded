@@ -1,0 +1,394 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/loan_dataset"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/loan_dataset">
+    <Prefix name="" IRI="http://www.semanticweb.org/loan_dataset"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Abstract"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Agent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Applicant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ApplicantIncome"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CoApplicant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CoApplicantIncome"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Education"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Entity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Female"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Gender"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Graduate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Income"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Loan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LoanApplicant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Male"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NotGraduate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Object"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Person"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysicalAgent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysicalObject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PropertyArea"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Quality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Rural"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Semiurban"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocialAgent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocialObject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Urban"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasEducation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGender"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasProperyArea"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasCreditHistory"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDependents"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasIncomeValue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasLoanAmount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasLoanAmountTerm"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#isMarried"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#isSelfEmployed"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Abstract"/>
+        <Class IRI="#Entity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Agent"/>
+        <Class IRI="#Object"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Applicant"/>
+        <Class IRI="#LoanApplicant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ApplicantIncome"/>
+        <Class IRI="#Income"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CoApplicant"/>
+        <Class IRI="#LoanApplicant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CoApplicantIncome"/>
+        <Class IRI="#Income"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Education"/>
+        <Class IRI="#Abstract"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Entity"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Female"/>
+        <Class IRI="#Gender"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Gender"/>
+        <Class IRI="#Quality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Graduate"/>
+        <Class IRI="#Education"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Income"/>
+        <Class IRI="#Abstract"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Loan"/>
+        <Class IRI="#Abstract"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LoanApplicant"/>
+        <Class IRI="#Person"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Male"/>
+        <Class IRI="#Gender"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NotGraduate"/>
+        <Class IRI="#Education"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Object"/>
+        <Class IRI="#Entity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <Class IRI="#Agent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PhysicalAgent"/>
+        <Class IRI="#Agent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PhysicalObject"/>
+        <Class IRI="#Object"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PropertyArea"/>
+        <Class IRI="#Abstract"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Quality"/>
+        <Class IRI="#Entity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Rural"/>
+        <Class IRI="#PropertyArea"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Semiurban"/>
+        <Class IRI="#PropertyArea"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SocialAgent"/>
+        <Class IRI="#Agent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SocialObject"/>
+        <Class IRI="#Object"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Urban"/>
+        <Class IRI="#PropertyArea"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Abstract"/>
+        <Class IRI="#Object"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Agent"/>
+        <Class IRI="#PhysicalObject"/>
+        <Class IRI="#SocialObject"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Applicant"/>
+        <Class IRI="#CoApplicant"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#ApplicantIncome"/>
+        <Class IRI="#CoApplicantIncome"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Female"/>
+        <Class IRI="#Male"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Graduate"/>
+        <Class IRI="#NotGraduate"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Person"/>
+        <Class IRI="#PhysicalAgent"/>
+        <Class IRI="#SocialAgent"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Rural"/>
+        <Class IRI="#Semiurban"/>
+        <Class IRI="#Urban"/>
+    </DisjointClasses>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasEducation"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasGender"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasProperyArea"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasEducation"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasGender"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasProperyArea"/>
+        <Class IRI="#Loan"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasEducation"/>
+        <Class IRI="#Education"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasGender"/>
+        <Class IRI="#Gender"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasProperyArea"/>
+        <Class IRI="#PropertyArea"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasCreditHistory"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasDependents"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasIncomeValue"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasLoanAmount"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasLoanAmountTerm"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#isMarried"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#isSelfEmployed"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasCreditHistory"/>
+        <Class IRI="#LoanApplicant"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDependents"/>
+        <Class IRI="#LoanApplicant"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasIncomeValue"/>
+        <Class IRI="#LoanApplicant"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasLoanAmount"/>
+        <Class IRI="#Loan"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasLoanAmountTerm"/>
+        <Class IRI="#Loan"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isMarried"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isSelfEmployed"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasCreditHistory"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasDependents"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasIncomeValue"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasLoanAmount"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasLoanAmountTerm"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#isMarried"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#isSelfEmployed"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi -->
+

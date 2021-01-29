@@ -1,0 +1,14 @@
+age			R
+sex			N	0 1
+cp			N	1 2 3 4
+trestbps	R
+chol		R
+fbs			N	0 1
+restecg		N	0 1 2
+thalach		R
+exang		N	0 1
+oldpeak		R
+slope		N	1 2 3
+ca			N	0 1 2 3
+thal		N	3 6 7
+class		N	okay disease

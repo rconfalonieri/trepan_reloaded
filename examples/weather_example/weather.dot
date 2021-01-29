@@ -1,0 +1,18 @@
+digraph tree
+{
+	1740673280 [color=blue,label="outlook = 1",shape=box];
+	1740673280 -> 1740711216 ;
+	1740711216 [color=blue,label="humidity = 4",shape=box];
+	1740711216 -> 1740735888 ;
+	1740735888 [color=blue,fontcolor=red,label="false"];
+	1740711216 -> 1742734144 ;
+	1742734144 [color=blue,fontcolor=green,label="true"];
+	1740673280 -> 1740736096 ;
+	1740736096 [color=blue,fontcolor=green,label="true"];
+	1740673280 -> 1740736960 ;
+	1740736960 [color=blue,label="wind = 6",shape=box];
+	1740736960 -> 1742735040 ;
+	1742735040 [color=blue,fontcolor=red,label="false"];
+	1740736960 -> 1742734240 ;
+	1742734240 [color=blue,fontcolor=green,label="true"];
+}

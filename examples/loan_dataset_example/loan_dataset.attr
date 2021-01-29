@@ -1,0 +1,12 @@
+ApplicantIncome R 
+CoApplicantIncome R 
+LoanAmount R 
+Loan_Amount_Term R 
+Gender N 0 1 
+Married N 0 1 
+Dependents N 0 1 2 3 
+Education N 0 1 
+Self_Employed N 0 1 
+Credit_History N 0 1 
+Property_Area N 0 1 2 
+class N false true

@@ -1,0 +1,24 @@
+digraph tree
+{
+	-1438477056 [color=blue,label="Gender",shape=box];
+	-1438477056 -> -1437580976 [label="Male"];
+	-1437580976 [color=blue,label="isMarried",shape=box];
+	-1437580976 -> -1435483920 [label="No"];
+	-1435483920 [color=blue,label="isSelfEmployed",shape=box];
+	-1435483920 -> -1435555040 [label="No"];
+	-1435555040 [color=blue,fontcolor=red,label="Granted"];
+	-1435483920 -> -1435554944 [label="Yes"];
+	-1435554944 [color=blue,fontcolor=green,label="NotGranted"];
+	-1437580976 -> -1435480864 [label="Yes"];
+	-1435480864 [color=blue,fontcolor=red,label="Granted"];
+	-1438477056 -> -1436532608 [label="Female"];
+	-1436532608 [color=blue,label="hasDependents",shape=box];
+	-1436532608 -> -1435562832 [label="0"];
+	-1435562832 [color=blue,fontcolor=red,label="Granted"];
+	-1436532608 -> -1438475696 [label="1"];
+	-1438475696 [color=blue,fontcolor=green,label="NotGranted"];
+	-1436532608 -> -1435563408 [label="2"];
+	-1435563408 [color=blue,fontcolor=green,label="NotGranted"];
+	-1436532608 -> -1435557168 [label="3+"];
+	-1435557168 [color=blue,fontcolor=green,label="NotGranted"];
+}

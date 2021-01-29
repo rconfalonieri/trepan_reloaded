@@ -1,0 +1,300 @@
+
+Introduction
+------------
+
+Given a trained neural network, the TREPAN algorithm extracts a decision tree 
+that provides a close approximation to the concept represented by the network.
+A brief description of the algorithm appears in [Craven & Shavlik, 1996],
+and a comprehensive description can be found in [Craven, 1996].
+
+In order to use TREPAN as is, you will have to set up at least five files:
+  - The "command" file provides a list of commands for TREPAN to execute.
+  - The "network" file describes the topology of the neural network.
+  - The "weight" file lists the weight and bias parameters of the network.
+  - The "attribute" file describes the attributes of the problem domain.
+  - The "example" files provide sets of examples for TREPAN to process.
+The network and weight files use the same formats as their
+counterparts in Rumelhart & McClelland's PDP code.  The command file
+used by TREPAN also is very similar to that used by the PDP code.
+
+TREPAN is invoked as follows:
+	trepan <command-file-name>
+where <command-file-name> is the name of a file that contains a list
+of commands for TREPAN to execute.  The following sections describe
+some of the commands that can by executed by TREPAN, and the file formats
+that it uses.
+
+A set of files (heart.cmd, heart.net, heart.wgt, heart.attr,
+heart.train.pat, heart.test.pat) for the UC-Irvine heart-disease domain
+is provided as an example.
+
+The code should be fairly easy to tailor to other neural-net and
+example/attribute representations, as well as additional commands.
+The interfaces to these aspects of the system are described below.
+First, the existing system is described.
+
+
+The Command File
+----------------
+
+The command file should list one command per line and be terminated
+by the command "quit".  Here are descriptions of some of the commands
+that can be processed by TREPAN.
+
+get attributes <file-name>
+   Read the attribute file indicated by <file-name>.  This command
+   should be executed before TREPAN is instructed to read any example
+   files.
+
+get training_examples <file-name>
+get test_examples <file-name>
+get validation_examples <file-name>
+   Read in sets of examples to be used as training, test, or validation
+   sets respectively.
+
+get network <file-name-stem>
+   Reads the network and weight files specified by <file-name-stem>.
+   TREPAN expects the network file to be called "<file-name-stem>.net"
+   and the weight file to be called either "<file-name-stem>.wgt" or
+   "<file-stem-name>.wts".
+
+get ensemble <file-name-stem> <number-of-networks>
+   Read in a set of networks to be treated as an ensemble (i.e. a committee
+   of classifiers).  TREPAN expects to find network and weight files
+   called "<file-name-stem>.<N>.net" and either "<file-name-stem>.<N>.wgt"
+   or ""<file-name-stem>.<N>.wts", where <N> ranges from 0 to
+   <number-of-networks> - 1.
+
+get attribute_mappings <file-name>
+   A crude method for specifying how a nominal attribute's value 
+   should be mapped into input-unit activations.  Each line of the file
+   specifies the mapping for one attribute.  The format of the line is
+   as follows:
+	<attribute-name> <vector-size> <vector>...
+   The first field indicates the name of attribute, the second field
+   indicates the size of the vector (i.e., the number of input units) used 
+   to represent the attribute's value, and subsequent fields specify the
+   vector used to represent each possible value of the attribute.  The order
+   of these vectors should correspond to the order of the values listed in
+   the attribute file.  Currently, this option works only for nominal
+   attributes.
+
+   Here is an example: suppose we had an attribute defined in the attribute
+   file as follows:
+	color	N	red green blue
+   and we used the vectors 1100 0101 0011 to represent these values respectively
+   when training a neural network.  The corresponding line in the 
+   attribute-mapping file should then be:
+	color	4	1 1 0 0   0 1 0 1   0 0 1 1
+
+
+set seed <number>
+   Set the seed for the random-number generator to <number>.  Setting
+   the seed in this fashion enables a run of TREPAN to be replicated.
+
+set tree_size_limit <number>
+   Specify the maximum size of the tree to be returned by TREPAN.
+   The value <number> indicates the maximum number of internal nodes
+   that may be in the tree.  The default value is 100.
+
+set min_sample <number>
+   Specify the minimum sample size (i.e. number of queries) that TREPAN 
+   should use at each node in the decision tree.  The default value is 1000.
+
+set activation_function logistic | tanh | linear     hidden | output |  all
+   Specify the activation function to use for a subset of the units
+   in the neural network.  The first parameter indicates the function
+   to use, and the second parameter indicates the units for which it
+   is being used.  The default is to use the logistic (sigmoid mapping
+   into [0, 1]) activation function for all hidden and output units.
+
+set classification_function threshold_half | threshold_zero | one_of_n
+  Specify the function to be used to map the network's output activations
+  into classifications.  The first two options, threshold_half and
+  threshold_zero, threshold the activation of a single output unit and
+  return the class corresponding to the thresholded activation.
+  Threshold_half is intended to be used with logistic activation functions,
+  and therefore thresholds the output on the value 0.5.  It is the default
+  function for networks with one output unit.  Threshold_zero is intended to 
+  be used with hyperbolic-tangent activation functions, and thresholds the 
+  output on the value 0.0.  The one_of_n option is intended for networks that 
+  have more than one output unit.  It returns the class corresponding to the 
+  output with the greatest activation.
+
+classify_using_network
+   Classify examples using the network and report its accuracy.  Accuracy
+   is measured and reported for all currently loaded example sets
+   (training, test, and validation).
+
+predict_using_network
+   Run all loaded example sets through the network and print the output-unit
+   activations for each example.
+
+trepan [ <file-name> ]
+   Extract a tree from the loaded network using the TREPAN algorithm.
+   If an optional file name is provided, TREPAN will print out accuracy
+   and fidelity information for all example sets (training, validation, test)
+   that are currently loaded.
+
+disjunctive_trepan [ <file-name> ]
+   Extract a tree from the loaded network using a variant of TREPAN that
+   uses disjunctive (i.e. "or") tests (instead of general m-of-n tests)
+   at the internal nodes of the extracted tree.  If an optional file name 
+   is provided, TREPAN will print out accuracy and fidelity information for 
+   all example sets (training, validation, test) that are currently loaded.
+
+lo_mofn [ <file-name> ]
+   Extract a tree from the loaded network using a variant of TREPAN
+   that uses only single-attribute tests at the internal nodes of the
+   extracted tree.  If an optional file name is provided, TREPAN will 
+   print out accuracy and fidelity information for all example sets 
+   (training, validation, test) that are currently loaded.
+
+test_fidelity
+   Measure the fidelity of the extracted tree with respect to the
+   given network.  Fidelity is defined as the percentage of examples
+   for which the predictions made by the extracted tree agree with the
+   predictions made by the network.  The fidelity of the tree is measured
+   and reported for all of the currently loaded example sets (training,
+   test and validation).
+
+test_correctness
+   Measure the accuracy of the extracted tree.  Accuracy is measured
+   and reported for all currently loaded example sets (training, test,
+   and validation).
+
+print_tree
+   Print an ASCII depiction of the extracted tree.  The conventions
+   used for printing the tree are similar to those used by Quinlan's
+   C4.5 code.  Next to each leaf node, TREPAN prints the class distribution
+   for training examples that reach the leaf (in the first set of brackets), 
+   and the class distribution of other membership queries it made at the leaf
+   (in the second set of brackets).
+
+draw_tree <file-name>
+   Save a representation of the tree that can be used by the "dot" program
+   to make a nice Postscript depiction of the tree.  The dot-readable
+   representation is saved in the file indicated by <file-name>.
+   
+quit
+   Stop processing commands and exit.
+
+
+The Attribute File
+------------------
+
+The attribute file lists the attributes of the problem domain.  Each line
+of the file should describe one of the attributes in the problem domain.
+Each attribute description should be in the following format:
+
+	<name> <type> [ <allowed values> ]
+
+The <name> can include any non-whitespace characters.  The <type> should be
+one of the following: B, N, R, indicating whether the attribute is Boolean,
+nominal, or real-valued, respectively.  If the attribute is nominal then the
+allowable values for the attribute should also be listed on the line.  The
+last line in the file should be a description of the class attribute.
+
+TREPAN makes the following assumptions about how attributes are mapped to
+input-unit activations.  Real-valued and Boolean attributes are assumed to
+be represented by one input unit each.  Boolean attributes are mapped to
+values of 0 (false) and 1 (true).  Nominal attributes are assumed to
+be represented by one input per value. 
+
+The order that the attributes are listed in this file should correspond
+to the order in which they should be mapped into the input vector 
+for the neural network.  Moreover, the order in which the allowable
+values for nominal attributes are listed in the file should correspond
+to the order of their corresponding input units in the network.
+
+
+Data Files
+----------
+
+The data files list the training/test examples for the problem.  Each example
+is listed on a separate line in the following format:
+
+	<name> <value>... <class-value> 
+
+The <name> can include any non-whitespace characters.  There should be
+one <value> listed for each attribute in the problem.  For a real-valued
+attribute, the corresponding value should be a number.  For a Boolean
+attribute, the value should be one of the following: t, f, true, false.
+For a nominal attribute, the value should be one of the allowable values
+listed in the attribute file.
+
+
+Hints on Running TREPAN
+-----------------------
+
+The first thing you should do when applying TREPAN to a network is to
+make sure that TREPAN is producing the correct outputs for the network.
+Do this by loading a network and a set of examples, and then running
+classify_using_network.  This function will report the accuracy of the
+network and will output a confusion matrix for the task.
+
+In order to determine a good tree size, provide the trepan command
+(or disjunctive_trepan or lo_mofn) with a file name.  When given a file name,
+these commands will record the fidelity of the tree each time TREPAN
+adds a new node.  Given the fidelity measurements in this file, the 
+trade-off between fidelity and tree complexity is readily apparent.
+
+I suggest trying the disjunctive version of TREPAN (called by the
+disjunctive_trepan command) in addition to the ordinary one.  It runs slightly
+faster than the version which searches for m-of-n tests, and I think
+the resulting trees are usually easier to understand.
+
+
+Modifying the Network Interface
+-------------------------------
+
+To use TREPAN with a different neural-network representation (or with a
+different type of classifier altogether), there are two primary functions 
+that need to be changed: get_network and register_network_oracle.
+The former function reads in a network when called.  The second function
+is the primary interface between TREPAN and the network.  When called,
+this function provides a pointer to a function that TREPAN can use
+to query the network.  The function supplied by register_network_oracle
+should have a prototype as follows:
+	int query_network(Example *example, AttributeInfo *attr_info)
+
+
+Modifying the Example/Attribute Interface
+-----------------------------------------
+
+To use TREPAN with different attribute/example files, there are two
+primary functions that need to be modified: read_attributes and
+read_examples.  Modified versions of these functions should set up the
+relevant data structures in the same way as the current versions.
+
+
+Modifying the Command Interface
+-------------------------------
+
+New commands can easily be added to TREPAN.  This is done by placing new calls
+to install_command_option in the function install_user_commands.
+Install_command_option takes three arguments: the name of the command,
+the "menu" of the command, and the function to be called when the
+command is invoked.  The "menu" of a command simply indicates whether the
+command is preceded by the word "get", "set", ..., or nothing at all.
+The function install_commands should provide a clear illustration
+of how commands are installed in TREPAN. 
+
+
+
+References
+----------
+
+[Craven, 1996]
+  Extracting Comprehensible Models from Trained Neural Networks.  PhD thesis,
+  Department of Computer Sciences, University of Wisconsin-Madison. 
+  Available as UW Technical Report CS-TR-96-1326, and by
+  ftp://ftp.cs.wisc.edu/machine-learning/shavlik-group/craven.thesis.ps.
+
+
+[Craven & Shavlik, 1996]
+  Extracting Tree-Structured Representations of Trained Networks. 
+  In Touretzky, D., Mozer, M., & Hasselmo, M., editors, Advances
+  in Neural Information Processing Systems (volume 8). MIT Press,
+  Cambridge, MA.
+      

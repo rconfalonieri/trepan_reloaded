@@ -1,0 +1,233 @@
+Prefix: : <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology>
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+
+Ontology: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology>
+
+
+AnnotationProperty: rdfs:comment
+
+    
+Datatype: rdf:PlainLiteral
+
+    
+Datatype: xsd:float
+
+    
+DataProperty: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#hasSpeed>
+
+    
+DataProperty: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#hasValue>
+
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Cloud>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#WeatherCondition>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#DryHumidity>
+
+    EquivalentTo: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Humidity>
+         and (<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#hasValue> only xsd:float[<= 25.0f])
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Humidity>
+    
+    DisjointWith: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#MoistHumidity>, <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#NormalHumidity>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Fog>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#WeatherCondition>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Humidity>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#WeatherPhenomenon>,
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#hasValue> exactly 1 xsd:float
+    
+    DisjointWith: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Wind>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#LightWind>
+
+    EquivalentTo: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Wind>
+         and (<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#hasSpeed> some xsd:float[> 0.2f])
+         and (<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#hasSpeed> some xsd:float[<= 10.7f])
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Wind>
+    
+    DisjointWith: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#NoWind>, <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#StrongWind>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#MoistHumidity>
+
+    EquivalentTo: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Humidity>
+         and (<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#hasValue> only xsd:float[> 60.0f])
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Humidity>
+    
+    DisjointWith: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#DryHumidity>, <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#NormalHumidity>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#NoWind>
+
+    EquivalentTo: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Wind>
+         and (<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#hasSpeed> some xsd:float[>= 0.0f])
+         and (<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#hasSpeed> some xsd:float[<= 0.2f])
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Wind>
+    
+    DisjointWith: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#LightWind>, <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#StrongWind>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#NormalHumidity>
+
+    EquivalentTo: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Humidity>
+         and (<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#hasValue> only xsd:float[> 25.0f])
+         and (<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#hasValue> only xsd:float[<= 60.0f])
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Humidity>
+    
+    DisjointWith: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#DryHumidity>, <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#MoistHumidity>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#PartlyCloud>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#WeatherCondition>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Rain>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#WeatherCondition>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#RainyWeather>
+
+    EquivalentTo: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#LightWind>
+         and <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Rain>
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#WeatherState>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Snow>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#WeatherCondition>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#StormWeather>
+
+    EquivalentTo: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Rain>
+         and <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#StrongWind>
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#WeatherState>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#StrongWind>
+
+    EquivalentTo: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Wind>
+         and (<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#hasSpeed> some xsd:float[> 10.7f])
+         and (<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#hasSpeed> some xsd:float[<= 24.4f])
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Wind>
+    
+    DisjointWith: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#LightWind>, <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#NoWind>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Sun>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#WeatherCondition>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#SunnyMoistWeather>
+
+    Annotations: 
+        rdfs:comment "high humidity and sun,"@en
+    
+    EquivalentTo: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#MoistHumidity>
+         and <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Sun>
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#WeatherState>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#SunnyWeather>
+
+    EquivalentTo: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#NormalHumidity>
+         and <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Sun>
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#WeatherState>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Thunder>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#WeatherCondition>
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#WeatherCondition>
+
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#WeatherPhenomenon>
+
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#WeatherState>
+
+    Annotations: 
+        rdfs:comment "Under the weather condition of"@en
+    
+    
+Class: <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Wind>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#WeatherPhenomenon>,
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#hasSpeed> exactly 1 xsd:float
+    
+    DisjointWith: 
+        <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Humidity>
+    
+    
+DisjointClasses: 
+    <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Cloud>,<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Fog>,<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#PartlyCloud>,<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Rain>,<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Snow>,<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Sun>,<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#Thunder>
+
+DisjointClasses: 
+    <http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#RainyWeather>,<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#StormWeather>,<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#SunnyMoistWeather>,<http://www.semanticweb.org/yc00090/ontologies/2018/10/simple-weather-ontology#SunnyWeather>
+

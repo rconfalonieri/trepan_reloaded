@@ -1,0 +1,36 @@
+
+IF (hasMajorVesselsColoredByFlourosopy = 0) 
+|   AND (ChestPain = TypicalAngina) THEN 'NotDisease' 
+|   AND (ChestPain = AtypicalAngina) THEN 'NotDisease' 
+|   AND (ChestPain = NonAnginalPain) THEN 'NotDisease' 
+|   AND (ChestPain = Asymptomatic) 
+|   |   AND (SlopePeakExerciseSTSegment = Upsloping) 
+|   |   |   AND (HeartRate = Normal) THEN 'NotDisease' 
+|   |   |   AND (HeartRate = FixedDefect) THEN 'NotDisease' 
+|   |   |   AND (HeartRate = ReversableDefect) 
+|   |   |   |   AND (hasBloodPressure <= 146.00) THEN 'NotDisease' 
+|   |   |   |   AND (hasBloodPressure > 146.00) THEN 'Disease' 
+|   |   AND (SlopePeakExerciseSTSegment = Flat) 
+|   |   |   AND (Gender = Female) 
+|   |   |   |   AND (HeartRate = Normal) THEN 'NotDisease' 
+|   |   |   |   AND (HeartRate = FixedDefect) THEN 'NotDisease' 
+|   |   |   |   AND (HeartRate = ReversableDefect) THEN 'Disease' 
+|   |   |   AND (Gender = Male) THEN 'Disease' 
+|   |   AND (SlopePeakExerciseSTSegment = Downsloping) THEN 'Disease' 
+IF (hasMajorVesselsColoredByFlourosopy = 1) 
+|   AND (ChestPain = TypicalAngina) THEN 'Disease' 
+|   AND (ChestPain = AtypicalAngina) 
+|   |   AND (Gender = Female) 
+|   |   |   AND (hasBloodPressure <= 125.00) THEN 'NotDisease' 
+|   |   |   AND (hasBloodPressure > 125.00) THEN 'Disease' 
+|   |   AND (Gender = Male) THEN 'Disease' 
+|   AND (ChestPain = NonAnginalPain) 
+|   |   AND (SlopePeakExerciseSTSegment = Upsloping) THEN 'NotDisease' 
+|   |   AND (SlopePeakExerciseSTSegment = Flat) 
+|   |   |   AND (HeartRate = Normal) THEN 'NotDisease' 
+|   |   |   AND (HeartRate = FixedDefect) THEN 'NotDisease' 
+|   |   |   AND (HeartRate = ReversableDefect) THEN 'Disease' 
+|   |   AND (SlopePeakExerciseSTSegment = Downsloping) THEN 'NotDisease' 
+|   AND (ChestPain = Asymptomatic) THEN 'Disease' 
+IF (hasMajorVesselsColoredByFlourosopy = 2) THEN 'Disease' 
+IF (hasMajorVesselsColoredByFlourosopy = 3) THEN 'Disease' 

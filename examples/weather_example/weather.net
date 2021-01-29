@@ -1,0 +1,5 @@
+definitions:
+ninputs 7
+nhiddenlayers 1 8 
+noutputs 1
+end
