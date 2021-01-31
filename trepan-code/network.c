@@ -6,7 +6,7 @@
 #include "examples-exp.h"
 #include "tree.h"
 #include "network-int.h"
-
+#include "java-interface.h"
 
 
 static NetworkRec active_net = { NULL, FALSE, 0, 0, 0, NULL };
@@ -702,6 +702,7 @@ static int query_network(Example *example, AttributeInfo *attr_info)
     set_input(&active_net, example, attr_info);
     compute_output(&active_net);
     predicted = (*active_net.classification_function)(&active_net);
+    printf("%d\n",predicted);
 
     return(predicted);
 }

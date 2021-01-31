@@ -113,6 +113,7 @@ int predict_class(Example *example, AttributeInfo *attr_info)
     
     predictor_class = (*env)->FindClass(env, "predictClass");
     predict_method = (*env)->GetStaticMethodID(env, predictor_class, "predict", "(Ljava/lang/String;Ljava/lang/String;)I");
-    printf("%s predict class is %d\n", values_string, (*env)->CallStaticIntMethod(env, predictor_class, predict_method, attributes, instance));
-    return(1);
+    // printf("%s predict class is %d\n", values_string, (*env)->CallStaticIntMethod(env, predictor_class, predict_method, attributes, instance));
+    // return(1);
+    return((*env)->CallStaticIntMethod(env, predictor_class, predict_method, attributes, instance));
 }
