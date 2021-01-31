@@ -8,6 +8,7 @@
 #include "network-int.h"
 
 
+
 static NetworkRec active_net = { NULL, FALSE, 0, 0, 0, NULL };
 
 static Ensemble active_ensemble = { 0, NULL, NULL, NULL, 0.0 };
@@ -705,6 +706,22 @@ static int query_network(Example *example, AttributeInfo *attr_info)
     return(predicted);
 }
 
+static int query_network_external_oracle(Example *example, AttributeInfo *attr_info)
+{
+    int predicted;
+
+    // JavaVM *jvm;
+    // JNIEnv *env;
+    // env = create_vm(&jvm);
+   
+    // set_input(&active_net, example, attr_info);
+    // compute_output(&active_net);
+    predicted = predict_class(example,attr_info);
+    // predicted = (*active_net.classification_function)(&active_net);
+
+    return(predicted);
+}
+
 static int query_ensemble(Example *example, AttributeInfo *attr_info)
 {
     //int i, j;
@@ -736,7 +753,8 @@ static int query_ensemble(Example *example, AttributeInfo *attr_info)
 void register_network_oracle(int(**oracle)())
 {
     if (oracle_is_network())
-        *oracle = query_network;
+        // *oracle = query_network;
+        *oracle = query_network_external_oracle;
     else if (oracle_is_ensemble())
         *oracle = query_ensemble;
     else

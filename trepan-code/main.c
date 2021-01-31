@@ -6,7 +6,7 @@
 #include "examples-exp.h"
 #include "tree.h"
 #include "command-exp.h"
-// #include "java-interface.h"
+
 
 
 
@@ -20,6 +20,7 @@
 //     invoke_class(env);
 //     return 0;
 // }
+
 
 
 main(argc, argv)
@@ -45,8 +46,9 @@ main(argc, argv)
    }
 
    
-   printf("Hello! This is a trepan version using a fucking ontology!\n");
+   printf("Hello! This is TREPAN RELOADED!\n");
    my_srandom(random_seed);
+   
    init_data_structures();
    init_command_handling();
    run_commands(in_stream);

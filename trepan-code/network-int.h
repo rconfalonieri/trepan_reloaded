@@ -53,4 +53,3 @@ typedef struct
    float total;		/* sum of coefficients */
 } Ensemble;
 
-

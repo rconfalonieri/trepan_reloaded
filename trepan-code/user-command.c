@@ -9,6 +9,7 @@
 #include "network-exp.h"
 #include "mofn-exp.h"
 #include "sample-exp.h"
+// #include "java-interface.h"
 
 void cmd_read_ontology(in_stream)
    FILE *in_stream;
@@ -17,9 +18,6 @@ void cmd_read_ontology(in_stream)
 
    if ((name = get_next_string(in_stream)) == NULL)
       error(prog_name, "file name for attribute file not specified", TRUE);
-
-   // 
-   
 
    read_attributes_ontology(name, &active_attributes);
 }
@@ -150,6 +148,7 @@ void install_user_commands()
 
 void install_user_variables()
 {
+   
 }
 
 

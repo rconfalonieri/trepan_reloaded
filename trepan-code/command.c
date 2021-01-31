@@ -75,6 +75,11 @@ void init_data_structures()
    active_attributes.attributes = NULL;
    active_attributes.stratification = NULL;
 
+   JavaVM *jvm;
+   // JNIEnv *env;
+   // env = create_vm(&jvm);
+   active_attributes.env = create_vm(&jvm);
+
    active_options.expansion_method = DEPTH_FIRST;
    active_options.split_search_method = GREEDY;
    active_options.do_sampling = FALSE;

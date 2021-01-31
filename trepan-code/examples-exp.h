@@ -1,3 +1,5 @@
+#include "java-interface.h"
+
 #define MAX_ATTR_VALUES		256
 #define MEAN_INDEX		0
 #define SIGMA_INDEX		1
@@ -77,6 +79,9 @@ typedef struct
    Attribute *attributes;			/* attribute descriptors */
    Stratification *stratification;		/* obsolete field */
    char* ontology_filename;
+   // JavaVM *jvm;
+   // JNIEnv *env = create_vm(&JavaVM);
+   JNIEnv *env;
 } AttributeInfo;
 
 

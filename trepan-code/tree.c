@@ -1458,7 +1458,7 @@ Split *splits;
             {  
                float inf_content = 0.0;
                if (split->frequency>0 && split->frequency<1) {
-                  printf("\nevaluate_splits %f",split->frequency);
+                  // printf("\nevaluate_splits %f",split->frequency);
                   inf_content = split->frequency;
                }
                else if (split->frequency==0) {
@@ -1473,12 +1473,12 @@ Split *splits;
                // {
                   // split->gain = (1-inf_content)*split->gain;
                
-               printf("\n----------------------------");
-               printf("\nevaluate_splits: inf_content %f",split->frequency);
-               printf("\nevaluate_splits: gain %f",split->gain);
+               // printf("\n----------------------------");
+               // printf("\nevaluate_splits: inf_content %f",split->frequency);
+               // printf("\nevaluate_splits: gain %f",split->gain);
                split->gain = inf_content*split->gain;
-               printf("\nevaluate_splits: new gain %f",split->gain);
-               printf("\n----------------------------");
+               // printf("\nevaluate_splits: new gain %f",split->gain);
+               // printf("\n----------------------------");
                // }
             }
          }
@@ -1557,9 +1557,9 @@ Split *splits;
 
    evaluate_splits(attr_info, ex_info, example_mask, options, splits);
 
-   printf("make_split: start: print_splits");
-   print_splits(attr_info, splits, stdout);
-   printf("make_split: print_splits: end");
+   // printf("make_split: start: print_splits");
+   // print_splits(attr_info, splits, stdout);
+   // printf("make_split: print_splits: end");
 
    best_split = pick_split(options, splits, ex_info, example_mask);
 
