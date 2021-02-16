@@ -79,6 +79,7 @@ typedef struct
    Attribute *attributes;			/* attribute descriptors */
    Stratification *stratification;		/* obsolete field */
    char* ontology_filename;
+   char* model_name;
    // JavaVM *jvm;
    // JNIEnv *env = create_vm(&JavaVM);
    JNIEnv *env;

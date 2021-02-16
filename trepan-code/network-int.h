@@ -1,3 +1,4 @@
+#define USE_NEURAL_NETWORK FALSE
 
 /* Information about weights in the neural network */
 typedef struct 

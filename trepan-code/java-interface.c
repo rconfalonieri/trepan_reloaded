@@ -13,7 +13,7 @@ JNIEnv* create_vm(JavaVM **jvm)
     
     args.nOptions = 1;
     // options.optionString = "-Djava.class.path=./libs/ontology-wrapper.jar";
-    options.optionString = "-Djava.class.path=./libs/predictClass.jar";
+    options.optionString = "-Djava.class.path=./libs/weka-RF-handler.jar";
     args.options = &options;
     args.ignoreUnrecognized = 0;
     
@@ -69,11 +69,12 @@ int predict_class(Example *example, AttributeInfo *attr_info)
     jclass predictor_class;
     jmethodID predict_method;
     // char src[] = "Look Here";
-	char attributes_string[200] = "";
-    char values_string[200] = "";
+	char attributes_string[500] = "";
+    char values_string[500] = "";
     char sep[] = ":";
     
     JNIEnv* env =  attr_info->env;
+    char *model_name = attr_info->model_name;
     Attribute *attribute;
     Value *value;
 
@@ -82,21 +83,23 @@ int predict_class(Example *example, AttributeInfo *attr_info)
             attribute = &attr_info->attributes[i];
             value = &example->values[i];
             
-            strcat(attributes_string, attribute->full_name);
+            strcat(attributes_string, attribute->name);
             strcat(attributes_string, sep);
+
+            char decimal_array[8];
+            char float_array[32];
+
             switch (attribute->type) {
                 case NOMINAL_ATTR:
                 case BOOLEAN_ATTR:
-                    printf("attribute %s value is %d\n",attribute->full_name,value->value.discrete);
-                    char decimal_array[2];
+                    // printf("attribute %s value is %d\n",attribute->name,value->value.discrete);
                     sprintf(decimal_array, "%d", value->value.discrete);
                     strcat(values_string, decimal_array);
                     strcat(values_string, sep);
                 break;
 
                 case REAL_ATTR:
-                    printf("attribute %s value is %f\n",attribute->full_name,value->value.real);
-                    char float_array[32];
+                    // printf("attribute %s value is %f\n",attribute->name,value->value.real);
                     sprintf(float_array, "%f", value->value.real);
                     strcat(values_string, float_array);
                     strcat(values_string, sep);
@@ -105,15 +108,16 @@ int predict_class(Example *example, AttributeInfo *attr_info)
             
         }
     }
-    printf("%s\n",attributes_string);
-    printf("%s\n",values_string);
+    // printf("%s\n",attributes_string);
+    // printf("%s\n",values_string);
 
     jstring attributes = (*env)->NewStringUTF(env,attributes_string);
     jstring instance = (*env)->NewStringUTF(env,values_string);
+    jstring model = (*env)->NewStringUTF(env,model_name);
     
-    predictor_class = (*env)->FindClass(env, "predictClass");
-    predict_method = (*env)->GetStaticMethodID(env, predictor_class, "predict", "(Ljava/lang/String;Ljava/lang/String;)I");
+    predictor_class = (*env)->FindClass(env, "runRandomForest");
+    predict_method = (*env)->GetStaticMethodID(env, predictor_class, "predictClassForLoanNumDataset", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I");
     // printf("%s predict class is %d\n", values_string, (*env)->CallStaticIntMethod(env, predictor_class, predict_method, attributes, instance));
     // return(1);
-    return((*env)->CallStaticIntMethod(env, predictor_class, predict_method, attributes, instance));
+    return((*env)->CallStaticIntMethod(env, predictor_class, predict_method, attributes, instance, model));
 }

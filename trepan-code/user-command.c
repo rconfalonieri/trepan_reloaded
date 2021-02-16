@@ -22,6 +22,24 @@ void cmd_read_ontology(in_stream)
    read_attributes_ontology(name, &active_attributes);
 }
 
+void cmd_read_model_name(in_stream)
+   FILE *in_stream;
+{
+   char *name;
+
+   if ((name = get_next_string(in_stream)) == NULL)
+      error(prog_name, "model name not specified", TRUE);
+
+   
+   // printf("Model name is %s",name);
+   active_attributes.model_name = malloc(strlen(name)+1); /* make space for the new string (should check the return value ...) */
+   strcpy(active_attributes.model_name, name); /* copy name into the new var */
+   printf("model_name is %s",active_attributes.model_name);
+  
+   // active_attributes.ontology_filename = name;
+   // active_options.ontology_filename = name;
+}
+
 void cmd_read_ontology_filename(in_stream)
    FILE *in_stream;
 {
@@ -138,6 +156,7 @@ void cmd_print_rules(in_stream)
 void install_user_commands()
 {
    install_command_option("attribute_values", GetMenuNum, cmd_read_attribute_values);
+   install_command_option("model_name", GetMenuNum, cmd_read_model_name);
    install_command_option("ontofilename", GetMenuNum, cmd_read_ontology_filename);
    install_command_option("ontology", GetMenuNum, cmd_read_ontology);
    install_command_option("draw_tree_revisited", NoMenuNum, cmd_draw_tree_revisited);

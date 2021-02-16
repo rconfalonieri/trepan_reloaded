@@ -702,7 +702,7 @@ static int query_network(Example *example, AttributeInfo *attr_info)
     set_input(&active_net, example, attr_info);
     compute_output(&active_net);
     predicted = (*active_net.classification_function)(&active_net);
-    printf("%d\n",predicted);
+    // printf("%d\n",predicted);
 
     return(predicted);
 }
@@ -719,7 +719,7 @@ static int query_network_external_oracle(Example *example, AttributeInfo *attr_i
     // compute_output(&active_net);
     predicted = predict_class(example,attr_info);
     // predicted = (*active_net.classification_function)(&active_net);
-
+    // printf("TrepanReloaded %d\n ", predicted);
     return(predicted);
 }
 
@@ -753,13 +753,17 @@ static int query_ensemble(Example *example, AttributeInfo *attr_info)
 
 void register_network_oracle(int(**oracle)())
 {
-    if (oracle_is_network())
-        // *oracle = query_network;
-        *oracle = query_network_external_oracle;
-    else if (oracle_is_ensemble())
-        *oracle = query_ensemble;
-    else
-        error(prog_name, "tried to use an oracle when no network loaded", TRUE);
+    *oracle = query_network_external_oracle;
+    // if (oracle_is_network()) {
+    //     if (USE_NEURAL_NETWORK)
+    //         *oracle = query_network;
+    //     else
+    //         *oracle = query_network_external_oracle;
+    // }
+    // else if (oracle_is_ensemble())
+    //     *oracle = query_ensemble;
+    // else
+    //     error(prog_name, "tried to use an oracle when no network loaded", TRUE);
 }
 
 void classify_using_network(Options *options, ExampleInfo *ex_info, AttributeInfo *attr_info, int **matrix)
